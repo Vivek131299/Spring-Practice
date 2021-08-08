@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+    
+    <!-- This is our SPRING CONFIGURATION FILE for this project -->
+        
+    <!-- EXPLICIT COMPONENT NAMES, ANNOTATIONS -->
+    <!-- We have seen previously that we have to write all the beans manually and that will be a 
+    big task if we have many beans.
+    So, in Spring we can make use of Java Annotations (like @Component) which will create the beans 
+    for us. We have to specify the package name to be scan by Spring in this configuration file.
+    We use this like @Component("xyz") in Java file(in Java file/class for which we want to create a bean)
+     and then Spring will register bean with the ID 'xyz'.
+     We can also use DEFAULT BEAN ID. (See comments in TennisCoach.java file). -->
+    
+    <!-- Add entry to Enable Component Scanning -->
+    <context:component-scan base-package="com.mypackage1.springdemo" />
+    <!-- The above base-package is the package where we are having all the code.
+    So, Spring will do Scanning of all files in this package and look for any ANNOTATIONS
+    and then register those beans automatically. -->
+    
+    
+    <!-- For loading properties file(sport.properties) for demonstrating properties injection
+    with annotations (@Value Annotation) (See comments in TennisCoach class from line 127). -->
+    <context:property-placeholder location="classpath:sport.properties"/>
+    <!-- The above line for loading properties file, should APPEAR JUST AFTER <context:component-scam../> line. -->
+
+</beans>
+
+
+
+
+
