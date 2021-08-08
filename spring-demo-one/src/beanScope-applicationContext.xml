@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+    
+    <!-- This is our SPRING CONFIGURATION FILE for this project -->
+    
+    
+    <!-- BEAN SCOPES -->
+    <!-- There are many scopes of bean which we can define to a bean.
+    The default scope is Singleton. Singleton means the memory is shared among all instances of 
+    that bean. Hence, at every time if we create or refer to a bean in our Java file, all those objects
+    will refer to a shared/single bean instance.
+    The another scope is Prototype in which new instance of bean is created each time we newly refer 
+    or create object by referring to that bean in our Java file. (Basically, it's opposite of Singleton Scope).  -->
+    
+    
+    
+    <!-- Configuring the DEPENDENCY INJECTION in this Spring configuration file -->
+    <!-- Define the dependency -->
+    <bean
+    	id="myFortuneService"
+    	class="com.mypackage1.springdemo.HappyFortuneService">
+    </bean>
+    
+    <!-- So by default, below bean's scope is Singleton.
+    	We can change it by using scope="prototype" to prototype scope or any other scope.-->
+    <bean 
+    	id="myCoach" 
+    	class="com.mypackage1.springdemo.TrackCoach" 
+    	scope="prototype" > <!-- If we did not give this, there will be default scope (i.e. Singleton). -->
+    	
+    	<!-- Set up CONSTRUCTOR INJECTION -->
+    	<constructor-arg ref="myFortuneService" /> 
+    	
+    </bean>
+   
+   
+</beans>
+
+
+
+
+
