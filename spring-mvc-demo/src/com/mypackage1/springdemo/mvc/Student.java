@@ -11,15 +11,28 @@ public class Student {
 	// For Reading Countries from Java Class instead of hard coding them in jsp file.
 	private LinkedHashMap<String, String> countryOptions;
 	
+	private String favoriteLanguage;
+	
+	// For Reading items for Radio Buttons from Java Class instead of hard coding them in jsp file.
+	private LinkedHashMap<String, String> favoriteLanguageOptions;
+	
 	public Student() {
 		// populate country options: used ISO country code
 		countryOptions = new LinkedHashMap<>();
 		
-		countryOptions.put("BR", "Brazil"); // So, "BR" is the country code/key and "Brazil is the actual label/value.
+		countryOptions.put("BR", "Brazil"); // So, "BR" is the country code/key and "Brazil is the actual label/value for displaying.
 		countryOptions.put("FR", "France");
 		countryOptions.put("DE", "Germany");
 		countryOptions.put("IN", "India");
 		countryOptions.put("US", "United States of America");
+		
+		// populate Radio Buttons items
+		favoriteLanguageOptions = new LinkedHashMap<>();
+		
+		favoriteLanguageOptions.put("Java", "Java"); // parameter order: .put(value, display_label)
+		favoriteLanguageOptions.put("C#", "C#");
+		favoriteLanguageOptions.put("PHP", "PHP");
+		favoriteLanguageOptions.put("Ruby", "Ruby");
 	}
 
 	public String getFirstName() {
@@ -50,5 +63,18 @@ public class Student {
 		return countryOptions;
 	}
 	// So, when form is loaded, Spring will call student.getCountryOptions() method.	
+
+	public String getFavoriteLanguage() {
+		return favoriteLanguage;
+	}
+
+	public void setFavoriteLanguage(String favoriteLanguage) {
+		this.favoriteLanguage = favoriteLanguage;
+	}
+
+	public LinkedHashMap<String, String> getFavoriteLanguageOptions() {
+		return favoriteLanguageOptions;
+	}
+	
 	
 }

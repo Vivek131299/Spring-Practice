@@ -18,6 +18,11 @@ The student is confirmed: ${student.firstName} ${student.lastName}
 Country: ${student.country}
 <!-- Similarly above, for ${student.country}, Spring will call student.getCountry() method. -->
 
+<br><br>
+
+Favorite Language: ${student.favoriteLanguage}
+<!-- Similarly, here Spring will call student.getFavoritelanguage() method. -->
+
 </body>
 
 </html>

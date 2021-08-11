@@ -40,7 +40,8 @@
 	     'value' is the actual code that we are passing to the model when we submit the form. -->
 	     
 	<!-- Commenting above form options because now we are Reading Countries form Java class (Student.java)
-	instead of hard coding them here. So now we do like:-->
+	instead of hard coding them here. 
+	So now we do like:-->
 	
 	<form:options items="${student.countryOptions}" />
 	
@@ -49,8 +50,31 @@
 		 call student.getCountryOptions() method. So this method will return a LinkedHashMap
 		 of countries and that will be displayed as options. -->
 	
+	<br><br>
 	
 	</form:select>
+	
+	<br><br>
+	
+	<!-- Below is the Spring MVC Form Tag for Radio Buttons -->
+	
+	Favorite Language:
+	
+<!--Java <form:radiobutton path="favoriteLanguage" value="Java" />
+	C# <form:radiobutton path="favoriteLanguage" value="C#" />
+	PHP <form:radiobutton path="favoriteLanguage" value="PHP" />
+	Ruby <form:radiobutton path="favoriteLanguage" value="Ruby" /> -->
+	
+	<!-- path is basically the property that we are binding this radio button to.
+	And, on submitting the form, Spring will call student.setFavoriteLanguage() method. -->
+	
+	<!-- We can also populate radio buttons with items from Java class like we did with select list above. -->
+	<!-- So, commenting above code for populating radio buttons items from Java file instead of 
+	hard coding them here. 
+	So now we do like: -->
+	
+	<form:radiobuttons path="favoriteLanguage" items="${student.favoriteLanguageOptions}" />
+	<!-- So '${student.favoriteLanguageOptions}' will call student.getFavoriteLanguageOptions() method. -->
 	
 	<br><br>
 	
