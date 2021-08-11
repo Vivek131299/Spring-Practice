@@ -31,6 +31,10 @@ Controller Level Request Mapping in our HelloWorldController. (See HelloWorldCon
 
 <br><br>
 
+<a href="student/showForm">Student form</a>
+
+<br><br>
+
 <img src="${pageContext.request.contextPath}/resources/images/spring-logo.png" />
 
 <br><br>
