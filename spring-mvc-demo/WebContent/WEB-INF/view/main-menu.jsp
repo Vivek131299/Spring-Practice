@@ -21,10 +21,13 @@ the correct root directory of static resources (like css, images, js) for our we
 <!-- Setting up a link to our helloworld-form.jsp so that we need to to go manually 
 to that form by typing in /showForm in url. -->
 
-<a href="showForm">Hello World form</a>
+<a href="hello/showForm">Hello World form</a>
 
 <!-- So, when we click this link 'Hello World form' then it will go to 'showForm' and
 'showForm' is the actual Request Mapping in our HelloWorldController. -->
+
+<!-- Later we are changing the href link from /showForm to hello/showForm because we have implemented 
+Controller Level Request Mapping in our HelloWorldController. (See HelloWorldController from line 14). -->
 
 <br><br>
 
