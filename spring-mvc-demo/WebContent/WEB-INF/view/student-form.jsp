@@ -78,6 +78,23 @@
 	
 	<br><br>
 	
+	<!-- Below is the Spring MVC Form Tag for Check Boxes -->
+	
+	<!-- USING CHECKBOXES
+	When using Check boxes, in Java code we need to add support when user selects multiple 
+	options. Like Array of Strings. And also we need to add appropriate getter and setter methods. -->
+	
+	Operating Systems:
+	
+	Linux <form:checkbox path="operatingSystems" value="Linux" />
+	Mac OS <form:checkbox path="operatingSystems" value="Mac OS" />
+	MS Windows <form:checkbox path="operatingSystems" value="MS Windows" />
+	
+	<!-- path is basically the property that we are binding this check boxes to.
+	And, on submitting the form, Spring will call student.setOperatingSystems() method. -->
+	
+	<br><br>
+	
 	<!-- When the Form is LOADED, Spring MVC will call the Getter Methods.
 		 So here, getFirstName() and getLastName() methods will get called. -->
 	

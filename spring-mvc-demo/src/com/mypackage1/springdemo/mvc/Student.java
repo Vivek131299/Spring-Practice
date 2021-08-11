@@ -16,6 +16,11 @@ public class Student {
 	// For Reading items for Radio Buttons from Java Class instead of hard coding them in jsp file.
 	private LinkedHashMap<String, String> favoriteLanguageOptions;
 	
+	// USING CHECKBOXES
+	// When using Check boxes, in Java code we need to add support when user selects multiple 
+	// options. Like Array of Strings. And also we need to add appropriate getter and setter methods.
+	private String[] operatingSystems;
+	
 	public Student() {
 		// populate country options: used ISO country code
 		countryOptions = new LinkedHashMap<>();
@@ -74,6 +79,14 @@ public class Student {
 
 	public LinkedHashMap<String, String> getFavoriteLanguageOptions() {
 		return favoriteLanguageOptions;
+	}
+
+	public String[] getOperatingSystems() {
+		return operatingSystems;
+	}
+
+	public void setOperatingSystems(String[] operatingSystems) {
+		this.operatingSystems = operatingSystems;
 	}
 	
 	
