@@ -35,12 +35,17 @@ Controller Level Request Mapping in our HelloWorldController. (See HelloWorldCon
 
 <br><br>
 
+<a href="customer/showForm">Customer form</a>
+
+<br><br>
+
 <img src="${pageContext.request.contextPath}/resources/images/spring-logo.png" />
 
 <br><br>
 
 <input type="button" onclick="doSomeWork()" value="Click Me" />
 <!-- This will call doSomething() function from simple-test.js file -->
+
 
 </body>
 
