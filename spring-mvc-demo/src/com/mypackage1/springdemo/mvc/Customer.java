@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.mypackage1.springdemo.mvc.validation.CourseCode;
+
 public class Customer {
 
 	private String firstName;
@@ -29,6 +31,13 @@ public class Customer {
 	// Adding validation rules(Regular expression) to postalCode. Rule- value must be only 5 chars/digits.
 	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits") // So basically it will accept chars from a to z, A to Z and digits from 0 to 9 but only 5 of them.
 	private String postalCode;
+	
+	// Add our custom validation
+	/*@CourseCode*/ // We are not passing any values and message here because we have already set defaults in 
+	// our CourseCode Annotation (See CourseCode class/annotation_interface in .validation package).
+	// We can also give custom value and message if we want. like:
+	@CourseCode(value="TOPS", message="must start with TOPS") // Now, field should start with 'TOPS'.
+	private String courseCode;
 	
 	public String getFirstName() {
 		return firstName;
@@ -60,6 +69,14 @@ public class Customer {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 	
 	
