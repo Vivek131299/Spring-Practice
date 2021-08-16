@@ -61,4 +61,7 @@ public class CustomerController {
 		
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
+	
+	// While adding Min and Max validation for freePasses attribute in Customer class,
+	// we don't have to add anything here, because @Valid above already handles validation.
 }
