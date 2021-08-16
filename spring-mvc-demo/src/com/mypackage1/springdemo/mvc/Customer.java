@@ -79,5 +79,5 @@ public class Customer {
 		this.courseCode = courseCode;
 	}
 	
-	
+	// This is added in Dell for git checking.
 }
