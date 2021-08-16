@@ -64,4 +64,5 @@ public class CustomerController {
 	
 	// While adding Min and Max validation for freePasses attribute in Customer class,
 	// we don't have to add anything here, because @Valid above already handles validation.
+	// Also later for validating regular expression for postalCode, we don't need to add anything.
 }

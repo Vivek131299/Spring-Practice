@@ -3,6 +3,7 @@ package com.mypackage1.springdemo.mvc;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Customer {
@@ -18,6 +19,10 @@ public class Customer {
 	@Min(value=0, message="must be greater than or equal to zero") // If the entered value is less than zero, then it will show error message.
 	@Max(value=10, message="must be less than or equal to 10") // If the entered value is greater than 10, then it will show error message.
 	private int freePasses;
+	
+	// Adding validation rules(Regular expression) to postalCode. Rule- value must be only 5 chars/digits.
+	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits") // So basically it will accept chars from a to z, A to Z and digits from 0 to 9 but only 5 of them.
+	private String postalCode;
 	
 	public String getFirstName() {
 		return firstName;
@@ -41,6 +46,14 @@ public class Customer {
 
 	public void setFreePasses(int freePasses) {
 		this.freePasses = freePasses;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 	
 	
