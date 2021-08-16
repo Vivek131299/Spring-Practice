@@ -27,6 +27,16 @@
 	
 	<!-- For configuring references to static resources (like css, images, js) -->
 	<mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
+	
+	
+	<!-- Load custom message resources -->
+	<bean id="messageSource"
+		  class="org.springframework.context.support.ResourceBundleMessageSource" >
+	
+		<!-- Loading resources/messages.properties file -->
+		<property name="basenames" value="resources/messages" />	
+			  
+	</bean>
 
 </beans>
 

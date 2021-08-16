@@ -35,6 +35,19 @@ public class CustomerController {
 		// This should NOT happen. We solve this issue by using @InitBinder Annotation.
 		System.out.println("Last name: |" + theCustomer.getLastName() + "|");
 		
+		// CUSTOM ERROR MESSAGES
+		// To check error message displayed after entering characters instead of int in freePasses field.
+		// If we put chars, We can see in error message in console after submitting form.
+		// In that, we can see that in code [...] section there are many error codes.
+		// So, in message.properties file, we are just overriding the 'typeMismatch.customer.freePasses' error code
+		// to show our custom message.
+		// This file contains key/value pairs for the error message type.
+		// For e.g.- typeMismatch.customer.freePasses=Invalid number
+		// the format of the error key is: code + "." + object name + "." + field
+		// Also, we need to tell Spring that we have added this and load that. So we add new bean and property
+		// inside that bean. (See spring-mvc-demo-servlet.xml file from line 32).
+		System.out.println("Binding result: " + theBindingResult);
+		
 		//checking if BindingResult has errors:
 		if (theBindingResult.hasErrors()) {
 			return "customer-form";
