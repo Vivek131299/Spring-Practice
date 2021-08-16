@@ -16,9 +16,11 @@ public class Customer {
 	private String lastName;
 
 	// Adding validation rules(Min and Max values) to freePasses.
+	@NotNull(message="is required") // Making this field required. But if we do it like this, it will show an error because, @NotNull trims all white spaces which is not possible on int.
+	// So we change the field type from primitive int to 'Integer' type. Also now need to change return type to Integer of getter and setter methods for this field.
 	@Min(value=0, message="must be greater than or equal to zero") // If the entered value is less than zero, then it will show error message.
 	@Max(value=10, message="must be less than or equal to 10") // If the entered value is greater than 10, then it will show error message.
-	private int freePasses;
+	private Integer freePasses;
 	
 	// Adding validation rules(Regular expression) to postalCode. Rule- value must be only 5 chars/digits.
 	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits") // So basically it will accept chars from a to z, A to Z and digits from 0 to 9 but only 5 of them.
@@ -40,11 +42,11 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-	public int getFreePasses() {
+	public Integer getFreePasses() {
 		return freePasses;
 	}
 
-	public void setFreePasses(int freePasses) {
+	public void setFreePasses(Integer freePasses) {
 		this.freePasses = freePasses;
 	}
 
