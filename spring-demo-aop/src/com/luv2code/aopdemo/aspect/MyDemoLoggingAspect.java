@@ -17,12 +17,14 @@ public class MyDemoLoggingAspect {
 	// call this method(beforeAddAccountAdvice()) for any execution of a method that
 	// has a signature 'public void addAccount()'.
 	// So this is @before Advice along with a Pointcut Expression.
+	// This will execute before addAccount() method in ANY CLASS.
+	// So this will also call addAccount() method from MembershipDAO class.
 	public void beforeAddAccountAdvice() { // We can give any method name.
 		
 		// Here we can add our own custom code.
 		// This custom code will be executed BEFORE that 
 		// given method (public void addAccount()) runs.
 		
-		System.out.println("\n=====>>> Executing @Before Advice on method addAccount()");
+		System.out.println("\n=====>>> Executing @Before Advice on method");
 	}
 }
