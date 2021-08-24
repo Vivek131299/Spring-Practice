@@ -20,6 +20,11 @@ public class MyDemoLoggingAspect {
 	// This will execute before addAccount() method in ANY CLASS.
 	// So this will also call addAccount() method from MembershipDAO class.
 	//
+	// NOTE: Modifier is optional. So we can also write it as: "execution(void addAccount())"
+	//       instead of "execution(public void addAccount())".
+	//       ALSO, we can give * instead of specifying modifier to apply on any modifier.
+	//       ///// * MEANS ANY /////
+	//
 	// MATCH ONLY AcountDAO addAccount() METHOD - 
 	// We can give fully qualified name of a class and method to only apply our 
 	// @Before advice method to it.
@@ -34,7 +39,15 @@ public class MyDemoLoggingAspect {
 	// So whole method name does not matter. It should only start with 'add'.
 	// So now, this will apply to our both methods addAccount() from AccountDAO AND
 	// addSillyMember() from MembershipDAO.
-	@Before("execution(public void add*())")
+	/*@Before("execution(public void add*())")*/
+	//
+	// MATCH METHOD WITH BASED ON RETURN TYPE - 
+	// If we give "execution(void add*())", it will only apply to methods which has
+	// return type as void an which name starts with 'add'.
+	// So, to match ANY RETURN TYPE, we can give * instead of specifying return type in 
+	// our Pointcut Expression so that it will call our both void addAccount() from AccountDAO
+	// AND boolean addSillyMember() from MembershipDAO like :
+	@Before("execution(* add*())")
 	public void beforeAddAccountAdvice() { // We can give any method name.
 		
 		// Here we can add our own custom code.
