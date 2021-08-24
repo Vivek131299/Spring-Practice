@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+    
+    <!-- This is our SPRING CONFIGURATION FILE for this project -->
+    
+    
+    
+    <!-- BEAN LIFECYCLE -->
+    <!-- First the container is started, then first thing happens after starting container is
+    that Bean is Instantiated, then Dependency Injections takes place. then some internal Spring
+    Processing occurs and then we can add our custom Init Method, and after all this our Bean is
+    ready for use until the container is shut down by our custom destroy method like context.close().
+    
+    Container started -> Bean Instantiated -> Dependencies Injection -> Internal Spring Processing -> 
+    -> Our Custom Init Method -> Bean is ready for use -> Container is shutdown -> 
+    -> Our Custom Destroy Method(context.close()).
+    
+    BEAN LIFECYCLE METHODS/HOOKS:
+    We can call custom code during Bean Initialization and Bean Destruction like
+    calling custom business logic methods, setting up handles to resources(while Initialization) and
+    cleaning up handles to resources(while Destruction).
+    We can specify Init method by property like: init-method="anyMethodName".
+    We can specify Destroy method by property like: destroy-method="anyMethodName".
+    Note: Method should be mostly void because it will not be able to capture the returned value and
+    	  Method should not accept any parameters (no-argument method).
+    	  
+    Note: For 'prototype' scoped beans, Spring does not call the destroy method.
+     -->
+    
+    
+   
+    <bean
+    	id="myFortuneService"
+    	class="com.mypackage1.springdemo.HappyFortuneService">
+    </bean>
+    
+   
+    <bean 
+    	id="myCoach" 
+    	class="com.mypackage1.springdemo.TrackCoach"
+    	init-method="doMyStartupStuff"  
+    	destroy-method="doMyCleanupStuff" >
+    	
+    	<constructor-arg ref="myFortuneService" /> 
+    	
+    </bean>
+    
+   
+</beans>
+
+
+
+
+

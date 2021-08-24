@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+    
+    <!-- This is our SPRING CONFIGURATION FILE for this project -->
+    
+    
+    <!-- For INJECTING VALUES FROM A PROPERTIES FILE -->
+    <!-- As we have injected the literal values below, we have actually hard coded them,
+    So, to solve this, we have created one PROPERTIES FILE (sport.properties) and values to
+     any specific name and that name(i.e. foo.email and foo.team) we will use here to access that values.-->
+    
+    <!-- So to access that names and values from properties file, we have to LOAD PROPERTIES FILE first-->
+    <!-- So FOR LOADING PROPERTIES FILE -->
+    <context:property-placeholder location ="classpath:sport.properties" />
+    <!-- 'sport.properties' is a file name -->
+    
+    
+    <!-- Configuring the DEPENDENCY INJECTION in this Spring configuration file -->
+    <!-- Define the dependency -->
+    <bean
+    	id="myFortune"
+    	class="com.mypackage1.springdemo.HappyFortuneService">
+    </bean>
+    
+    
+    <bean 
+    	id="myCoach" 
+    	class="com.mypackage1.springdemo.TrackCoach"> <!-- If we want to use BaseballCoach instead of TracKCoach,
+    	then we can just replace the TrackCoach by BaseballCoach like 
+    	class="com.mypackage1.springdemo.BaseballCoach" 
+    	and we need not to change anything in HelloSpringApp.java file. -->
+    	
+    	<!-- Set up CONSTRUCTOR INJECTION -->
+    	<constructor-arg ref="myFortune" /> <!-- Here we are giving the bean id in ref which we have to inject -->
+    	<!-- So here what Spring framework will do is, it will create our Coach object (line 36) then call
+    	the constructor (line 42) and pass in that fortune reference (i.e. myFortune) -->
+    </bean>
+    
+    
+    <!-- GETTER DEPENDENCY INJECTION -->
+    <bean
+    	id="myCricketCoach"
+    	class="com.mypackage1.springdemo.CricketCoach">
+    	
+    	<!-- Setup SETTER INJECTION -->
+    	<property name="fortuneService" ref="myFortune" />
+    	<!-- Above, name="fortuneService" will call the setFortuneService() method. 
+    	Basically it makes first character(i.e. f) capital(i.e. F) and adds 'set' to the 
+    	beginning(i.e. setFortuneService) and then it calls that method/setter. -->
+    	
+    	
+    	<!-- INJECTING LITERAL VALUES -->
+    	<!-- <property name="emailAddress" value="thebestcoach@spring.com" />
+    	<property name="team" value="Sunrisers Hyderabad" />	 -->
+    	<!-- Above, the 'value' we are giving is the actual String/value we are assigning to that literal/variable
+    	of emailAddress and team.
+    	And 'name' will call corresponding setter method like- emailAddress will call setEmailAddress()
+    	and team will call setTeam(), and then it will pass/Inject given values into that. -->
+    	
+    	<!-- To access literal values by PROPERTIES FILE which we have loaded above(on line 22) instead of 
+    	hard coding that values(like we did on line 61 and 62). -->
+    	<property name="emailAddress" value="${foo.email}" />
+    	<property name="team" value="${foo.team}" />
+    	<!-- As we can see above the syntax of accessing the values
+    	 is "${the property name which we have used to store value in our properties file}" -->
+    </bean>
+    
+
+</beans>
+
+
+
+
+
