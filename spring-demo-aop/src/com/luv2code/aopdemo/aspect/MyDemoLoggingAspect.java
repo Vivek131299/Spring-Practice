@@ -47,7 +47,45 @@ public class MyDemoLoggingAspect {
 	// So, to match ANY RETURN TYPE, we can give * instead of specifying return type in 
 	// our Pointcut Expression so that it will call our both void addAccount() from AccountDAO
 	// AND boolean addSillyMember() from MembershipDAO like :
-	@Before("execution(* add*())")
+	/*@Before("execution(* add*())")*/
+	//
+	// MATCH METHOD PARAMETER TYPES /  PARAMETER PATTERN WILDCARDS
+	// ()   - matches a method with no arguments.
+	// (*)  - matches a method with one argument of any type.
+	// (..) - matches a method with 0 or more arguments of any type.
+	// We can specify any parameter type by giving fully qualified class name of that parameter class.
+	// LIKE : "execution(* addAccount(com.luv2code.aopdemo.Account))".
+	// NOTE : We must use FULLY QUALIFIED CLASS NAME for defining parameter type.
+	//        So for above, we CAN'T give just 'Account'.
+	// So it will apply to a method with any return type which has name 'addAccount' AND
+	// has parameter of type 'com.luv2code.aopdemo.Account'. 
+	// So it will only apply if we pass Account object from that given package in fully qualified class name.
+	//
+	// MATCH ON ANY METHOD IN ANY CLASS IN PACKAGE WITH ANY ARGUMENTS - 
+	// LIKE : @Before("execution(* com.luv2code.aopdemo.dao.*.*(..))").
+	// So this will apply to a method of any return type (first *) in our specified 
+	// package (com.luv2code.aopdemo.dao), to any class in that package (second *) and 
+	// to any method in that class (third *) which can have 0 or more arguments of any type ((..)).
+	/*@Before("execution(* add*(com.luv2code.aopdemo.Account))")*/
+	//
+	// Now we have changed our addAccount() method to take 2 parameters (of Account and boolean type)
+	// instead of just one (of Account type) before.
+	// So, above @Before statement will not work.
+	// So we can update it to accept any number of arguments AFTER matching an Account object :
+	/*@Before("execution(* add*(com.luv2code.aopdemo.Account, ..))")*/
+	//
+	// BUT we can also remove that first Account parameter type restriction from our above statement and 
+	// update it to accept any number of parameters of any type.
+	// So now it will apply to both addAccount(Account, boolean) and addSillyMember() methods.
+	/*@Before("execution(* add*(..))")*/
+	//
+	// MATCH METHODS IN A PACKAGE - 
+	// So this will apply to a method of any return type (first *) in our specified 
+	// package (com.luv2code.aopdemo.dao), to any class in that package (second *) and 
+	// to any method in that class (third *) which can have 0 or more arguments of any type ((..)).
+	// We ADD one more method(public boolean doWork()) in our AccountDAO class
+	// AND one method(public void goToSleep()) in our MembershipDAO class to test below.
+	@Before("execution(* com.luv2code.aopdemo.dao.*.*(..))")
 	public void beforeAddAccountAdvice() { // We can give any method name.
 		
 		// Here we can add our own custom code.
