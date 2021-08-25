@@ -61,7 +61,8 @@ public class MyDemoLoggingAspect {
 		// now, execute the method
 		Object result = null;
 		
-		// handling the exception
+		// HANDLING THE EXCEPTION
+		/*
 		try {
 			result = theProceedingJoinPoint.proceed();
 			// Above, we are using .proceed() method to EXECUTE / INVOKE our target method.
@@ -74,6 +75,20 @@ public class MyDemoLoggingAspect {
 			
 			// give user a custom message
 			result = "Major accident! But no worries, your private AOP helicopter is on the way!";
+		}
+		*/
+		
+		// COMMENTING above code for Rethrowing the exception update below,
+		
+		// RETHROWING THE EXCEPTION
+		try {
+			result = theProceedingJoinPoint.proceed();
+		} catch (Exception e) {
+			// log the exception
+			System.out.println(e.getMessage());
+		
+			// Rethrow the exception
+			throw e;
 		}
 		
 		
